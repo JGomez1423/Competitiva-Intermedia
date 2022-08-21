@@ -3,47 +3,44 @@ using namespace std;
 
 class CheatingAfterTests{
       public:
-             int cheat(vector<int> report){
-                int flag=0;
+            int cheat(vector<int> report){
+                sort(report.begin(), report.end());
                 int sum=0;
-                pair<int,int> min = {109,0};
-                pair<int,int> min2 = {109,0};
-                for(int i=0;i<report.size();i++){
-                    if(report[i]>=90&&report[i]<min2.first){
-                        min2={report[i],i};
-                    }else if(flag==0&&report[i]<min.first){
-                        min={report[i],i};
-                        if(report[i]>=10) flag=1;
-                    }else if(report[i]<min.first && report[i]>=10){
-                        min={report[i],i};
-                    }  
-                    /*cout<<i<<"  min: "<<min.first<<endl;
-                    cout<<i<<"  min2: "<<min2.first<<endl;*/
-
+                if(report[0]>=10) {
+                    if(report[0]>=90){
+                        report[0]=99;
+                    }else {
+                        report[0]=90+(report[0]%10);
+                        //cout<<"1st: "<<report[0]<<endl;
+                    }
+                    }else {pair<int,int> min ={report[0],0};
+                    for(int i=0;i<report.size();i++){
+                        if(report[i]>=90){
+                            if(report[0]<report[i]%10){
+                                report[0]=9;
+                                break;
+                            }else{
+                                report[i]=99;
+                                break;
+                            }
+                        }
+                        if(report[i]>9 && report[i]<90){
+                            report[i]=90+(report[i]%10);
+                            break;
+                        }
+                        if(i==report.size()-1){
+                            report[0]=9; 
+                            break;
+                        }
+                    }
                 }
-
-                if(flag){
-                    if(report[min.second]<90){
-                        report[min.second]=90+(min.first%10);
-                    }else report[min.second]=99;
-                }else{
-                    if(min.first<min2.first%10){
-                        report[min.second]=9;
-                    }else{
-                        report[min2.second]=99;
-                    }
-                    }
                 for(auto i:report){
                     sum+=i;
+                    //cout<<i<<endl;
                 }
                 return sum;
-             }
-             
+
+
+            }
+
 };
-int main(int argc, char const *argv[])
-{
-    string s;
-    CheatingAfterTests p;
-    cout<<"respuesta: "<<p.cheat({4, 5, 7, 2})<<endl;
-    return 0;
-}
