@@ -14,7 +14,7 @@ class CheatingAfterTests{
                     }else if(flag==0&&report[i]<min.first){
                         min={report[i],i};
                         if(report[i]>=10) flag=1;
-                    }else if(report[i]<min.first && report[i]>10){
+                    }else if(report[i]<min.first && report[i]>=10){
                         min={report[i],i};
                     }  
                     /*cout<<i<<"  min: "<<min.first<<endl;
