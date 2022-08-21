@@ -15,11 +15,13 @@ class Palindromize{
                          aux+=1;
                          int j=i+1;
                          while(n-auxcont>j){
+                             //cout<<s[j]<<"  "<<s[n-auxcont]<<endl;
                              if(s[j]==s[n-auxcont]){
                                  j++;
                                  auxcont++;
                              }else{
                                  pila.push(s[i]);
+                                 auxcont=1;
                                  break;
                              }
                              
@@ -29,19 +31,18 @@ class Palindromize{
                         pila.push(s[i]);
                      }
                  }
-                 vector<char> v;
-                 for(int i=0;i<s.size();i++){
-                    v.push_back(s[i]);
-                 }
 
+                 vector<char> v;
                  while(!pila.empty()) {
                         
                         v.push_back(pila.top());
                         pila.pop();
                     
                  }string sol(v.begin(), v.end());
+                 s.append(sol);
 
-                 return sol;
+
+                 return s;
              }
              
 };
