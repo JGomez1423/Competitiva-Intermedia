@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Hexagons{
+      public:
+            
+            int centers(vector<strings> v){
+                for(auto i: v){
+                    if(getCandidatoD())
+
+                }
+
+
+
+            }
+            vector<strings> getCandidatoD(vector<strings> v, int centro, char izquierda){
+                vector<strings> candidatos;
+                for(auto i: v){
+                    for(int j=0;j<v[i].length()-1;i++){
+                        if(v[i][j]==centro-'0'){
+                            if(j+1==v[i].length()-1){
+                                if(v[i][0]==izquierda) candidatos.push_back(v[i]);
+                            }else {
+                                if(v[i][j]==izquierda) candidatos.push_back(v[i]);
+                            }
+                        } break;
+                    }
+                }
+                return candidatos;
+            }
+            int getIntD  (vector<string>, int centro){
+                
+            }
+            
+                
+};
